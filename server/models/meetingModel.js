@@ -7,26 +7,29 @@ const meetingSchema = new Schema({
     type: String,
     required: true
   },
-  description: {
-    type: String
-  },
-  start_time: {
+  date: {
     type: Date,
     required: true
   },
+  start_time: {
+    type: Date,
+  },
   end_time: {
     type: Date,
+  },
+  room: {
+    type: Number,
+    required: true
+  },
+  description: {
+    type: String,
     required: true
   },
   attendees: [
     {
       type: String,
     }
-  ],
-  room: {
-    type: Number,
-    required: true
-  }
+  ]
 });
 
 module.exports = mongoose.model('Meeting', meetingSchema);

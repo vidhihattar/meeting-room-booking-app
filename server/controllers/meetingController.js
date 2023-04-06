@@ -30,10 +30,10 @@ const getMeeting = async (req, res) => {
 // create a new meeting
 
 const createMeeting = async (req, res) => {
-    const { title, description, start_time, end_time, attendees, room } = req.body;
+    const { title, date , start_time, end_time, room , description,attendees} = req.body;
 
     try {
-        const meeting = await Meeting.create({ title, description, start_time, end_time, attendees, room });
+        const meeting = await Meeting.create({ title, date, start_time, end_time, room, attendees, description });
         res.status(200).json(meeting);
     } catch (err) {
         res.status(400).json({ err: err.message });
