@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useMeetingsContext } from '../hooks/useMeetingsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 
 const CreateMeeting = () => {
     const {dispatch} = useMeetingsContext()
+    const { user } = useAuthContext()
 
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
@@ -23,7 +25,8 @@ const CreateMeeting = () => {
             method: 'POST',
             body: JSON.stringify(meeting),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 

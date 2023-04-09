@@ -3,25 +3,35 @@ import MeetingCard from '../components/MeetingCard';
 import MomCard from '../components/MomCard';
 
 import { useMeetingsContext } from "../hooks/useMeetingsContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const Home = () => {
 
   const { meetings, dispatch } = useMeetingsContext()
+  const {user} = useAuthContext()
 
   useEffect(()=>{
     const fetchMeetings = async()=>{
-        const response = await fetch('/api/meetings/');
+        const response = await fetch('/api/meetings/', {
+          headers: {'Authorization': `Bearer ${user.token}`}
+        });
 
         const json = await response.json();
 
         if(response.ok){
+
             dispatch({type: 'SET_MEETINGS', payload: json})
-            console.log(json);
+            console.log("response is ok");
+
         }
     }
 
-    fetchMeetings();
-}, [dispatch]);
+    if (user) {
+      console.log("home called");
+      fetchMeetings()
+    }
+}, [dispatch, user]);
+    console.log(meetings);
 
 
     return (
@@ -29,7 +39,7 @@ const Home = () => {
         <div className="upcoming-meetings-container">
           <div className="upcoming-meetings-heading">Upcoming Meetings</div>
           <div className="meeting-cards-container">
-
+          {console.log(meetings)}
           {meetings && meetings.map(meeting => (
                     <MeetingCard meeting= {meeting} key = {meeting._id} />
                 ))}
@@ -43,13 +53,7 @@ const Home = () => {
             <MomCard />
             <MomCard />
             <MomCard />
-            <MomCard />
-            <MomCard />
-            <MomCard />
-            <MomCard />
-            <MomCard />
-            <MomCard />
-            <MomCard />
+
           </div>
         </div>
 

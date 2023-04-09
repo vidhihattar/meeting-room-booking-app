@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 // get all meetings
 
 const getMeetings = async (req, res) => {
-    const meetings = await Meeting.find({}).sort({ createdAt: -1 });
+    const user_id = req.user._id;
+    const meetings = await Meeting.find({user_id}).sort({ createdAt: -1 });
 
     res.status(200).json(meetings);
 }
@@ -33,7 +34,8 @@ const createMeeting = async (req, res) => {
     const { title, date , start_time, end_time, room , description,attendees} = req.body;
 
     try {
-        const meeting = await Meeting.create({ title, date, start_time, end_time, room, attendees, description });
+        const user_id = req.user._id;
+        const meeting = await Meeting.create({ title, date, start_time, end_time, room, attendees, description, user_id });
         res.status(200).json(meeting);
     } catch (err) {
         res.status(400).json({ err: err.message });

@@ -29,7 +29,11 @@ const meetingSchema = new Schema({
     {
       type: String,
     }
-  ]
+  ],
+  user_id: {
+    type: String,
+    required: true 
+  }  
 });
 
 module.exports = mongoose.model('Meeting', meetingSchema);

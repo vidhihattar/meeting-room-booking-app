@@ -1,4 +1,6 @@
 const express = require('express');
+
+
 const {
     getMeetings,
     getMeeting,
@@ -6,8 +8,12 @@ const {
     deleteMeeting,
     updateMeeting
 } = require('../controllers/meetingController')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router();
+
+// require auth for all meeting routes
+router.use(requireAuth)
 
 // GET all meetings
 router.get('/', getMeetings);

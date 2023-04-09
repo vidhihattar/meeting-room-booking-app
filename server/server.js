@@ -3,6 +3,7 @@ dotenv.config()
 const express = require('express');
 const mongoose = require('mongoose');
 const meetingRoutes = require('./routes/meetings');
+const userRoutes = require('./routes/user')
 
 
 //xpress app
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/meetings', meetingRoutes);
+app.use('/api/user', userRoutes)
 
 
 //connect to db
