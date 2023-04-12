@@ -227,3 +227,59 @@ hr{
   display: inline-block;
   --field-padding: 12px;
 }
+
+/* create meeting form  */
+
+.create-meeting-form-container {
+  width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.create-meeting-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.create-meeting-form label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.create-meeting-form input[type="text"],
+.create-meeting-form textarea,.create-meeting-form input[type="date"],.create-meeting-form input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.create-meeting-form button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #442B48;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-meeting-form button:hover {
+  background-color: #9a829e;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
