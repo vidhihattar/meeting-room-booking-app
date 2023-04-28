@@ -1,4 +1,7 @@
+import { useAuthContext } from "../hooks/useAuthContext"
+
 const MeetingCard = ({meeting}) => {
+    const {user} = useAuthContext()
     return (
 
         <div className="meeting-card">
@@ -9,11 +12,11 @@ const MeetingCard = ({meeting}) => {
             <div className="meeting-body">
                 <div className="top-body">
                     <div className="meeting-host">
-                        <div className="host">Host : </div>
+                        <div className="host">Host : {user.email}</div>
                       
                     </div>
                     <div className="meeting-time">
-                        <div>{meeting.start_time} - {meeting.end_time}</div>
+                        <div>{meeting.start_time} </div>
                     </div>
                 </div>
                 <div className="mid-body">

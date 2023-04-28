@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { useLogout } from '../hooks/useLogout';
-
+import { useAuthContext } from "../hooks/useAuthContext"
 
 
 
 function Sidebar(props) {
     const { logout } = useLogout();
+    const {user} = useAuthContext();
 
 
     const handleClick = () => {
@@ -26,16 +27,17 @@ function Sidebar(props) {
 
             <div class="profile">
                 <div class="picture"></div>
-                <div class="name">John Doe</div>
+                <div class="name">{user.email}</div>
             </div>
 
             <div className="sidebar-options">
 
                 <Link to="/">
                     <div className="option" >
-                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.85714 16C7.30486 16 6.85714 15.5523 6.85714 15V10.1429C6.85714 9.59057 6.40943 9.14286 5.85714 9.14286H0.999999C0.447715 9.14286 0 8.69514 0 8.14286V7.85714C0 7.30486 0.447715 6.85714 1 6.85714H5.85714C6.40943 6.85714 6.85714 6.40943 6.85714 5.85714V0.999999C6.85714 0.447715 7.30486 0 7.85714 0H8.14286C8.69514 0 9.14286 0.447715 9.14286 1V5.85714C9.14286 6.40943 9.59057 6.85714 10.1429 6.85714H15C15.5523 6.85714 16 7.30486 16 7.85714V8.14286C16 8.69514 15.5523 9.14286 15 9.14286H10.1429C9.59057 9.14286 9.14286 9.59057 9.14286 10.1429V15C9.14286 15.5523 8.69514 16 8.14286 16H7.85714Z" fill="#442B48" />
-                        </svg>
+                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 17.5C1.45 17.5 0.979002 17.304 0.587002 16.912C0.195002 16.52 -0.000664969 16.0493 1.69779e-06 15.5V6.5C1.69779e-06 6.18333 0.0710015 5.88333 0.213002 5.6C0.355002 5.31667 0.550669 5.08333 0.800002 4.9L6.8 0.4C6.98334 0.266667 7.175 0.166667 7.375 0.0999999C7.575 0.0333332 7.78334 0 8 0C8.21667 0 8.425 0.0333332 8.625 0.0999999C8.825 0.166667 9.01667 0.266667 9.2 0.4L15.2 4.9C15.45 5.08333 15.646 5.31667 15.788 5.6C15.93 5.88333 16.0007 6.18333 16 6.5V15.5C16 16.05 15.804 16.521 15.412 16.913C15.02 17.305 14.5493 17.5007 14 17.5H10V10.5H6V17.5H2Z" fill="#442B48"/>
+</svg>
+
                         <p> Home</p>
                     </div>
                 </Link>
@@ -57,9 +59,9 @@ function Sidebar(props) {
                     <p> Join Meeting</p> </div>
 
 
-                <div className="option" >
+                {/* <div className="option" >
                     <i class="fa-regular fa-calendar cal-svg fa-lg"></i>
-                    <p> Calendar</p> </div>
+                    <p> Calendar</p> </div> */}
 
 
                 <div className="option" >
