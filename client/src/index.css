@@ -11,30 +11,65 @@ body {
 /* sidebar */
 
 .sidebar {
-  width: 250px;
+  width: 290px;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   background-color: #FFDB5A;
-  padding: 20px;
+  padding: 20px 0 40px;
   color: #442B48;
+  margin-bottom: 40px;
 }
 
 .sidebar-options{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 50px 20px;
+  margin: 50px 0;
   
 }
 
-.sidebar .option{
-  display: flex;
-  flex-direction: row;
+.sidebar a .option svg{ 
+  margin-left: 60px;
+}
+.sidebar a .option{
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+}
+
+.sidebar .option, .sidebar .logout-option{
+  display: flex;
+  width: 290px;
+  flex-direction: row;
+
   
+}
+
+.sidebar .logout-option {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+ margin-left: -10px;
+padding-top:-50px;
+}
+
+.sidebar .logout-option p{
+  padding-right: 12px;
+}
+
+
+
+
+
+.sidebar .option:hover{
+  background-color: #442B48;
+  color: #FFDB5A;
+  cursor: pointer;
+}
+
+.sidebar .option:hover path{
+  fill: #fabb00;
 }
 
 
@@ -59,9 +94,7 @@ body {
   font-size: 18px;
 }
 
-.sidebar a:hover {
-  text-decoration: underline;
-}
+
 
 .sidebar svg, .cal-svg{
   margin: 15px ;
@@ -88,7 +121,7 @@ body {
 }
 
 .sidebar .logout{
-  margin-top: 150px;
+  margin-top: 100px;
   margin-right: 20px;
 }
 
