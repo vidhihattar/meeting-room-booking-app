@@ -25,7 +25,7 @@ const MeetingCard = ({meeting}) => {
                 </div>
                 <div className="bottom-body">
                     <div className="meeting-room">
-                        <div className="venue">Venue : </div>  {meeting.room}
+                        <div className="venue">Venue : </div>  {meeting.room.name}
                     </div>
 
                 </div>

@@ -7,28 +7,38 @@ import CreateMeeting from './pages/CreateMeeting';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { useAuthContext } from './hooks/useAuthContext';
+import { UsersContextProvider } from './context/UsersContext';
+import { RoomsContextProvider } from './context/RoomsContext';
 
 
 function App() {
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
 
   return (
     <div>
 
       <BrowserRouter >
-      {
-        user && <Sidebar />
-      }
-        
+        {
+          user && <Sidebar />
+        }
+
         <Routes>
           <Route
             path="/"
-            element={user? <Home />: <Navigate to="/login"/>} 
+            element={user ? <Home /> : <Navigate to="/login" />}
           />
 
           <Route
             path="/createmeeting"
-            element={user? <CreateMeeting />: <Navigate to="/login"/>}
+            element={user ? (
+              <UsersContextProvider>
+                <RoomsContextProvider>
+                  <CreateMeeting />
+
+                </RoomsContextProvider>
+
+              </UsersContextProvider>
+            ) : <Navigate to="/login" />}
           />
 
           <Route
@@ -37,10 +47,10 @@ function App() {
           />
           <Route
             path="/signup"
-            element={!user ? <Signup /> : <Navigate to="/" />} 
-            />
+            element={!user ? <Signup /> : <Navigate to="/" />}
+          />
 
-      </Routes>
+        </Routes>
 
       </BrowserRouter>
 

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+
 const meetingSchema = new Schema({
   title: {
     type: String,
@@ -18,8 +19,14 @@ const meetingSchema = new Schema({
     type: Date,
   },
   room: {
-    type: Number,
-    required: true
+    id: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
   },
   description: {
     type: String,
@@ -27,13 +34,20 @@ const meetingSchema = new Schema({
   },
   attendees: [
     {
-      type: String,
+      id: {
+        type: String,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      }
     }
   ],
   user_id: {
     type: String,
     required: true 
-  }  
+  }
 });
 
 module.exports = mongoose.model('Meeting', meetingSchema);
