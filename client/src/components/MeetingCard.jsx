@@ -4,33 +4,34 @@ const MeetingCard = ({meeting}) => {
     const {user} = useAuthContext()
     return (
 
-        <div className="meeting-card">
-            <div className="meeting-header">
-                <div className="meeting-title">{meeting.title}</div>
-                <div>{meeting.date}</div>
+        <div class="meeting-card">
+    
+        <div class="meeting-header">
+            <div class="meeting-title">{meeting.title}</div>
+            <div>{meeting.date}</div>
+        </div>
+        <div class="meeting-body">
+            <div class="top-body">
+                <div class="meeting-host">
+                    <div class="host">Host : {user.email}</div>
+                  
+                </div>
+                <div class="meeting-time">
+                    <div>{meeting.start_time} </div>
+                </div>
             </div>
-            <div className="meeting-body">
-                <div className="top-body">
-                    <div className="meeting-host">
-                        <div className="host">Host : {user.email}</div>
-                      
-                    </div>
-                    <div className="meeting-time">
-                        <div>{meeting.start_time} </div>
-                    </div>
+            <div class="mid-body">
+                {meeting.description}
+               
+            </div>
+            <div class="bottom-body">
+                <div class="meeting-room">
+                    <div class="venue">Venue : </div>  {meeting.room.name}
                 </div>
-                <div className="mid-body">
-                    {meeting.description}
-
-                </div>
-                <div className="bottom-body">
-                    <div className="meeting-room">
-                        <div className="venue">Venue : </div>  {meeting.room.name}
-                    </div>
-
-                </div>
+    
             </div>
         </div>
+    </div>
 
     );
 }

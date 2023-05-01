@@ -157,64 +157,109 @@ padding-top:-50px;
 
 
 .meeting-card{
-  width: 440px;
-  height: 223px;
-  border-radius: 10px;
-  background-color:#FFC700;
-  color: white;
-  padding: 10px;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
+    width: 440px;
+    height: 223px;
+    border-radius: 10px;
+    background-color:white;
+   
+    border: 2px solid #FFC700;
+    padding: 0;
+    margin: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  /* .card-2{
+    background-color:#FFC700;
+    margin:22px;
+    
+    display:flex;
+    border-radius: 8px 8px 0px 0px;
+    height: 35px;
+    margin-top: -265px;
+    border: none;
+  } */
+  
+  
+  
+  .meeting-cards-container, .mom-cards-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+  }
+  
+  .meeting-card .meeting-header, .meeting-card .top-body, .meeting-host{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
 
+  
+  .meeting-room{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .top-body, .mid-body{
+    margin: 5px;
+  }
+  
+  .meeting-header{
+    align-items: center;
+  }
+  .meeting-header div:nth-child(2), .meeting-header div:nth-child(1){
+    color: white;
+    
 }
 
-.meeting-cards-container, .mom-cards-container{
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-}
+  
+  .meeting-body .host, .venue{
+    font-weight: bold;
+    margin: 0 5px 0 0;
+  }
+  
+  .meeting-body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 30px;
+    padding: 0 0 0 10px;
+  }
+  .mid-body{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 90px;
+  }
+  .meeting-body {
+  margin-top: 10px;
+  
+  }
+  .meeting-time{
+    padding: 0 5px 0 0 ;
+  }
+  
+  .bottom-body{
+    
+    margin-bottom:15px; 
+    margin-left: 5px;
+    
+  }
+  
+  .meeting-title{
+    font-size: 22px;
+    font-weight: 600;
+  }
 
-.meeting-card .meeting-header, .meeting-card .top-body, .meeting-host{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.meeting-room{
-  display: flex;
-  flex-direction: row;
-}
-
-.meeting-header, .top-body, .mid-body, .bottom-body{
-  margin: 10px;
-}
-
-.meeting-header{
-  align-items: center;
-}
-
-.meeting-body .host, .venue{
-  font-weight: bold;
-  margin: 0 5px 0 0;
-}
-
-.meeting-body{
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.bottom-body{
-  margin: auto 10px; 
-}
-
-.meeting-title{
-  font-size: 22px;
-  font-weight: 600;
-}
-
-
+  .meeting-header{
+    background-color: #FFC700;
+    padding: 10px 10px 10px 10px;
+    height: 200px;
+    border-radius: 8px 8px 0px 0px;
+  }
+  
+ 
 /* 
 mom card */
 
@@ -494,4 +539,14 @@ hr{
 }
 .signup-button{
   min-width: fit-content;
+}
+
+
+/* Join Meeting */
+
+.join-meeting-card{
+  border: solid #FFC700 2px;
+  background-color: #FFC700;
+  width: 50rem;
+  height:20rem;
 }
