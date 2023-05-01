@@ -507,3 +507,13 @@ hr{
 .signup-button{
   min-width: fit-content;
 }
+
+
+/* Join Meeting */
+
+.join-meeting-card{
+  border: solid #FFC700 2px;
+  background-color: #FFC700;
+  width: 50rem;
+  height:20rem;
+}
