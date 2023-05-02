@@ -62,8 +62,6 @@ function Sidebar(props) {
                     <p> Join Meeting</p> </div>
                    
 
-                    <p> Join Meeting</p> 
-                </div>
 
                 </Link>
                 

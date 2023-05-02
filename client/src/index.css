@@ -547,6 +547,72 @@ hr{
 .join-meeting-card{
   border: solid #FFC700 2px;
   background-color: #FFC700;
-  width: 50rem;
-  height:20rem;
+  width: 30rem;
+  height:10rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  
+}
+
+.join-meeting-card .card-header{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+border:solid  rgb(255, 0, 255) 2px;
+
+margin: 0;
+}
+.join-meeting-card .card-header .card-title, .card-date{
+  padding: 10px 0 10px 0;
+  margin: 0;
+}
+
+.join-meeting-card .card-header .card-title{
+ margin: 0 110px 0 0;
+}
+
+.join-meeting-card .card-body{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+border:solid  rgb(255, 0, 255) 2px;
+}
+
+.card-body .card-host, .card-time{
+  padding: 10px 0 10px 0;
+  margin: 0;
+}
+
+
+.card-body .card-host{
+  margin: 0 90px 0 0;
+}
+
+.join-meeting-card .card-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border:solid  rgb(255, 0, 255) 2px;
+}
+
+.join-meeting-card .card-footer p{
+  margin: 10px 0 10px 20px;
+  
+}
+
+
+.join-meeting-card .card-footer .card-venue, button{
+  padding: 10px 0 10px 0;
+  
+}
+
+
+
+
+.card-footer button{
+
 }
