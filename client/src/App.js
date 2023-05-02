@@ -10,6 +10,9 @@ import JoinMeeting from './pages/JoinMeeting'
 import { useAuthContext } from './hooks/useAuthContext';
 import { UsersContextProvider } from './context/UsersContext';
 import { RoomsContextProvider } from './context/RoomsContext';
+import {MeetingInvitesContextProvider} from './context/MeetingInvitesContext'
+import MeetingInvites from './pages/MeetingInvites';
+
 
 
 function App() {
@@ -41,18 +44,32 @@ function App() {
               </UsersContextProvider>
             ) : <Navigate to="/login" />}
           />
-<Route
-path='/joinmeeting'
-element={user ? (
-  <UsersContextProvider>
-    <RoomsContextProvider>
-      <JoinMeeting/>
+          <Route
+            path='/joinmeeting'
+            element={user ? (
+              <UsersContextProvider>
+                <RoomsContextProvider>
+                  <JoinMeeting />
 
-    </RoomsContextProvider>
+                </RoomsContextProvider>
 
-  </UsersContextProvider>
-) : <Navigate to="/login" />}
-/>
+              </UsersContextProvider>
+            ) : <Navigate to="/login" />}
+          />
+          <Route
+            path='/meetinginvites'
+            element={user ? (
+              <UsersContextProvider>
+
+                <MeetingInvitesContextProvider>
+                  <MeetingInvites />
+                </MeetingInvitesContextProvider>
+
+
+
+              </UsersContextProvider>
+            ) : <Navigate to="/login" />}
+          />
           <Route
             path="/login"
             element={!user ? <Login /> : <Navigate to="/" />}

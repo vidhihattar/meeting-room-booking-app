@@ -29,13 +29,13 @@ export const meetingsReducer = (state, action) => {
 }
 
 export const MeetingsContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(meetingsReducer, { 
-      meetings: null
+    const [state, dispatch] = useReducer(meetingsReducer, {
+        meetings: null
     })
-    
+
     return (
-      <MeetingsContext.Provider value={{ ...state, dispatch }}>
-        { children }
-      </MeetingsContext.Provider>
+        <MeetingsContext.Provider value={{ ...state, dispatch }}>
+            {children}
+        </MeetingsContext.Provider>
     )
-  }
+}
