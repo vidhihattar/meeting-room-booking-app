@@ -41,12 +41,15 @@ function MeetingInvites() {
         <div className="meeting-cards-container">
 
           {meetingInvites && meetingInvites.map(invite => (
-            <MeetingCard meeting={invite} key={invite._id} />
+            <MeetingCard meeting={invite} key={invite._id} home={false} />
           ))}
         </div>
       </div>
     </div>
   )
+
+
+
 }
 
 export default MeetingInvites
