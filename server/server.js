@@ -6,6 +6,7 @@ const meetingRoutes = require('./routes/meetings');
 const userRoutes = require('./routes/user')
 const usersRoutes = require('./routes/users')
 const roomRoutes = require('./routes/room')
+const meetingInvitesRoutes = require('./routes/meetingInvites')
 
 
 //xpress app
@@ -21,7 +22,8 @@ app.use((req, res, next) => {
 app.use('/api/meetings', meetingRoutes);
 app.use('/api/user', userRoutes)
 app.use('/api/users', usersRoutes);
-app.use('/api/room', roomRoutes)
+app.use('/api/room', roomRoutes);
+app.use('/api/meetinginvites', meetingInvitesRoutes);
 
 
 //connect to db
