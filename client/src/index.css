@@ -647,8 +647,9 @@ hr {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.2s, opacity 0.2s linear;
-  width: 1085px; /* updated width */
-  height: 670px; /* updated height */
+  width: 900px; /* updated width */
+  height: 570px; /* updated height */
+  padding : 30px;
 }
 
 .modal.is-open {
@@ -702,3 +703,36 @@ hr {
 }
 
 
+.modal .modal-body{
+  display: flex;
+  flex-direction: row;
+  font-weight: 300;
+}
+
+.modal-left-container,
+.modal-right-container{
+  width: 50%;
+
+  margin: 20px;
+}
+
+.modal-heading{
+  color: #6B4671;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.modal .status-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  padding-right: 30px;
+}
+
+.modal .status-div div:nth-child(1){
+
+}
+.modal .status-div div:nth-child(2){
+  left: 0;
+}
