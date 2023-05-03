@@ -1,18 +1,33 @@
 import React from 'react';
+// import { useMeetingsContext } from '../hooks/useMeetingsContext'
+// import { useAuthContext } from '../hooks/useAuthContext'
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+}
+function formatTime(dateString) {
+  const date = new Date(dateString);
+  const options = { hour: 'numeric', minute: 'numeric' };
+  return date.toLocaleTimeString('en-US', options);
+}
 
-const JoinMeetingCard = () => {
+const JoinMeetingCard = ({meeting}) => {
     return (
         <div className="join-meeting-card">
         <div className="card-header">
-          <h2 className="card-title">Meeting Name</h2>
-          <p className="card-date">Date: <span>31st May, 2023</span></p>
+          <h2 className="card-title">{meeting.title}</h2>
+          <p className="card-date"><span>{formatDate(meeting.date)}</span></p>
         </div>
         <div className="card-body">
-          <p className="card-host">Hosted by: <span>John Doe</span></p>
-          <p className="card-time">Time: <span>10:00 AM - 11:30 AM</span></p>
-          <p classNAme="card-venue">Venue: <span>Online</span></p>
+          <p className="card-host">Host: <span>{meeting.host}</span></p>
+          <p className="card-time"><span>{formatTime(meeting.start_time)} - {formatTime(meeting.end_time)}</span></p>
+          
         </div>
-        <button className="card-button">Join Meeting</button>
+        <div className="card-footer">
+        <p classNAme="card-venue">Venue:{meeting.room.name}</p>
+        <button className="card-button">Join Now</button>
+        </div>
       </div>
     );
 }
