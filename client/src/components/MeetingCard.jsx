@@ -13,13 +13,49 @@ function formatTime(dateString) {
 }
 
 
-const MeetingCard = ({ meeting, home }) => {
+const MeetingCard = ({ meeting, home, onClick }) => {
     const { user } = useAuthContext()
+    
+
+    const handleClick = async (e) => {
+        const buttonText = e.target.innerText;
+        if (buttonText == "Accept") {
+            const status = "Accepted";
+            const meetingId = meeting._id;
+
+
+
+            const response = await fetch(`/api/meetinginvites/attendees/${meetingId}`, {
+                method: 'PUT',
+                body: JSON.stringify({status: status}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                    }
+                })
+
+                const json = await response.json()
+
+                if (!response.ok) {
+                    console.log(json.error)
+                }
+                if (response.ok) {
+                    console.log(json);
+                }
+
+        }
+        else {
+            const status = "Denied";
+
+        }
+
+
+    }
 
 
     return (
 
-        <div class="meeting-card">
+        <div class="meeting-card " onClick={onClick}>
 
             <div class="meeting-header">
                 <div class="meeting-title">{meeting.title}</div>
@@ -48,8 +84,8 @@ const MeetingCard = ({ meeting, home }) => {
                             <button className="join-btn">Join</button>
                         ) : (
                             <div>
-                                <button className="accept-btn">Accept</button>
-                                <button className="deny-btn">Deny</button>
+                                <button className="accept-btn" onClick={handleClick}>Accept</button>
+                                <button className="deny-btn" onClick={handleClick}>Deny</button>
                             </div>
                         )}
                     </div>

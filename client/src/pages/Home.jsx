@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MeetingCard from '../components/MeetingCard';
 import MomCard from '../components/MomCard';
+import MeetingModal from "../components/MeetingModal";
 
 import { useMeetingsContext } from "../hooks/useMeetingsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
@@ -9,6 +10,16 @@ const Home = () => {
 
   const { meetings, dispatch } = useMeetingsContext()
   const { user } = useAuthContext()
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleCardClick() {
+    setIsModalOpen(true);
+  }
+
+  function handleModalClose() {
+    setIsModalOpen(false);
+  }
 
   useEffect(() => {
     const fetchMeetings = async () => {
@@ -41,7 +52,11 @@ const Home = () => {
         <div className="meeting-cards-container">
           {console.log(meetings)}
           {meetings && meetings.map(meeting => (
-            <MeetingCard meeting={meeting} key={meeting._id} home = {true}/>
+            <>
+            <MeetingCard meeting={meeting} key={meeting._id} home = {true} onClick={handleCardClick}/>
+            <div className={`modal-overlay ${isModalOpen ? 'is-open' : ''}`}></div>
+            <MeetingModal isOpen={isModalOpen} onClose={handleModalClose} meeting={meeting} key={meeting._id} />
+            </>
           ))}
         </div>
 
