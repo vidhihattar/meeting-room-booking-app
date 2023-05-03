@@ -41,7 +41,7 @@ const Home = () => {
         <div className="meeting-cards-container">
           {console.log(meetings)}
           {meetings && meetings.map(meeting => (
-            <MeetingCard meeting={meeting} key={meeting._id} />
+            <MeetingCard meeting={meeting} key={meeting._id} home = {true}/>
           ))}
         </div>
 

@@ -1,4 +1,5 @@
 const Meeting = require('../models/meetingModel');
+const MeetingInvite = require('../models/meetingInviteModel')
 const Room = require('../models/roomModel');
 const mongoose = require('mongoose');
 
@@ -6,7 +7,7 @@ const mongoose = require('mongoose');
 
 const getMeetings = async (req, res) => {
     const user_id = req.user._id;
-    const meetings = await Meeting.find({user_id}).sort({ createdAt: -1 });
+    const meetings = await Meeting.find({ user_id }).sort({ createdAt: -1 });
 
     res.status(200).json(meetings);
 }
@@ -32,7 +33,7 @@ const getMeeting = async (req, res) => {
 // create a new meeting
 
 const createMeeting = async (req, res) => {
-    const { title, date , start_time, end_time, room , description,attendees} = req.body;
+    const { title, date, start_time, end_time, room, description, attendees } = req.body;
 
     try {
         const user_id = req.user._id;
@@ -52,7 +53,29 @@ const createMeeting = async (req, res) => {
             description,
             user_id
         });
-        
+
+        for (const attendee of attendees) {
+            const invite = await MeetingInvite.create({
+                meeting_id: meeting._id,
+                attendee_id: attendee.id,
+                title,
+                date,
+                start_time,
+                end_time,
+                room: {
+                    id: room.id,
+                    name: room.name
+                },
+                attendees: attendees.map(attendee => ({
+                    id: attendee.id,
+                    name: attendee.name
+                })),
+                description,
+                user_id
+            });
+            console.log(`Meeting invite created for attendee ${attendee.name}`);
+        }
+
 
         res.status(200).json(meeting);
     } catch (err) {
