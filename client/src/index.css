@@ -613,13 +613,15 @@ hr {
 .join-meeting-card {
   border: solid #FFC700 2px;
   background-color: #FFC700;
-
+  color:white;
   width: 30rem;
   height:10rem;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  
+  padding:10px 10px 0px 5px;
+  margin:10px 0 0 10px;
+  background-image: conic-gradient(from 230deg,#FcC700, #FFa700, #Ffc700);
 }
 
 .join-meeting-card .card-header{
@@ -627,17 +629,30 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-border:solid  rgb(255, 0, 255) 2px;
+/* border:solid  rgb(255, 0, 255) 2px; */
+
+
 
 margin: 0;
 }
 .join-meeting-card .card-header .card-title, .card-date{
-  padding: 10px 0 10px 0;
+  padding: 20px 0 10px 0;
   margin: 0;
 }
-
+.join-meeting-card .card-header .card-date{
+  margin-left:10px;
+ 
+}
 .join-meeting-card .card-header .card-title{
- margin: 0 110px 0 0;
+ 
+ width: 200px;
+ margin: 0 15px 0 0;
+ padding: 0 125px 0 0;
+ white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis; 
+
 }
 
 .join-meeting-card .card-body{
@@ -645,17 +660,30 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-border:solid  rgb(255, 0, 255) 2px;
+padding: 10px 0 0 0;
+/* border:solid  rgb(255, 0, 255) 2px; */
 }
 
 .card-body .card-host, .card-time{
-  padding: 10px 0 10px 0;
+  padding: 5px 0 10px 0;
   margin: 0;
+  font-weight:700;
+}
+.card-body .card-time{
+font-size: small;
+ padding-left:20px;
 }
 
 
 .card-body .card-host{
-  margin: 0 90px 0 0;
+  margin: 0 95px 0 0;
+  padding:0 50px 0 0;
+  width: 150px;
+ 
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 .join-meeting-card .card-footer{
@@ -663,19 +691,43 @@ border:solid  rgb(255, 0, 255) 2px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border:solid  rgb(255, 0, 255) 2px;
+/*   border:solid  rgb(255, 0, 255) 2px; */
 }
 
 .join-meeting-card .card-footer p{
   margin: 10px 0 10px 20px;
+  padding-top: 15px;
   
 }
 
 
 .join-meeting-card .card-footer .card-venue, button{
   padding: 10px 0 10px 0;
-  
+/*   border:2px solid red; */
 }
+.join-meeting-card .card-footer button{
+  margin-left:17rem;
+  margin-top: 10px;
+  border-radius:10px;
+  font-size:smaller;
+  font-weight:100;
+  height:40px;
+  padding:5px;
+  
+  background-color:#6B4671;
+  color:white;
+  border:none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.join-meeting-card .card-footer .card-venue{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width:200px;
+  font-weight:bolder;
+  margin-left:5px;
+}
+
 
 
 
