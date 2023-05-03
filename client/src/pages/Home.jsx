@@ -12,8 +12,10 @@ const Home = () => {
   const { user } = useAuthContext()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentMeeting, setCurrentMeeting] = useState(null);
 
-  function handleCardClick() {
+  function handleCardClick(meeting) {
+    setCurrentMeeting(meeting);
     setIsModalOpen(true);
   }
 
@@ -52,12 +54,15 @@ const Home = () => {
         <div className="meeting-cards-container">
           {console.log(meetings)}
           {meetings && meetings.map(meeting => (
-            <>
-            <MeetingCard meeting={meeting} key={meeting._id} home = {true} onClick={handleCardClick}/>
-            <div className={`modal-overlay ${isModalOpen ? 'is-open' : ''}`}></div>
-            <MeetingModal isOpen={isModalOpen} onClose={handleModalClose} meeting={meeting} key={meeting._id} />
-            </>
+            <div key={meeting._id}>
+              <MeetingCard meeting={meeting} onClick={() => handleCardClick(meeting)} home={true} />
+            </div>
           ))}
+
+          <div className={`modal-overlay ${isModalOpen ? 'is-open' : ''}`}></div>
+          {currentMeeting && (
+            <MeetingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} meeting={currentMeeting} />
+          )}
         </div>
 
       </div>
