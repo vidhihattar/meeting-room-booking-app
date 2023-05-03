@@ -41,6 +41,10 @@ const meetingSchema = new Schema({
       name: {
         type: String,
         required: true
+      },
+      status: {
+        type: String,
+        default: "pending"
       }
     }
   ],
