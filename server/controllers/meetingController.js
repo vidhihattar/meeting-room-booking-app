@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 const getMeetings = async (req, res) => {
     const user_id = req.user._id;
-    const meetings = await Meeting.find({ user_id }).sort({ createdAt: -1 });
+    const meetings = await Meeting.find({ 'host.id': user_id }).sort({ createdAt: -1 });
 
     res.status(200).json(meetings);
 }
@@ -33,49 +33,31 @@ const getMeeting = async (req, res) => {
 // create a new meeting
 
 const createMeeting = async (req, res) => {
-    const { title, date, start_time, end_time, room, description, attendees } = req.body;
+    const { title, date, start_time, end_time, room, description, attendees, host } = req.body;
+    const user_id = req.user._id;
+    const user_email =req.body.host.name;
+    console.log(user_email)
+    
 
     try {
-        const user_id = req.user._id;
+        const host = {
+            id: user_id,
+            name: user_email
+        };
+        console.log(host)
+
         const meeting = await Meeting.create({
             title,
             date,
             start_time,
             end_time,
-            room: {
-                id: room.id,
-                name: room.name
-            },
-            attendees: attendees.map(attendee => ({
-                id: attendee.id,
-                name: attendee.name
-            })),
+            room,
+            attendees,
             description,
-            user_id
+            host
         });
 
-        for (const attendee of attendees) {
-            const invite = await MeetingInvite.create({
-                meeting_id: meeting._id,
-                attendee_id: attendee.id,
-                title,
-                date,
-                start_time,
-                end_time,
-                room: {
-                    id: room.id,
-                    name: room.name
-                },
-                attendees: attendees.map(attendee => ({
-                    id: attendee.id,
-                    name: attendee.name
-                })),
-                description,
-                user_id
-            });
-            console.log(`Meeting invite created for attendee ${attendee.name}`);
-        }
-
+    
 
         res.status(200).json(meeting);
     } catch (err) {

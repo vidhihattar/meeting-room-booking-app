@@ -48,9 +48,15 @@ const meetingSchema = new Schema({
       }
     }
   ],
-  user_id: {
-    type: String,
-    required: true 
+  host: {
+    id: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
   }
 });
 

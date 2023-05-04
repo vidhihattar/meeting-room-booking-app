@@ -21,6 +21,11 @@ export const meetingsReducer = (state, action) => {
                 meetings: state.meetings.filter((m) => m._id !== action.payload._id)
             }
 
+        case 'SET_MEETING':
+            return {
+                meeting: action.payload
+            }
+
         default:
             return state
     }

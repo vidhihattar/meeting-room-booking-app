@@ -973,7 +973,7 @@ font-size: small;
   border: 1px solid #ccc;
 
   width: 900px;
-  height: 500px;
+  height: 550px;
   margin: 0 auto;
   padding: 30px;
   padding-left: 20px;
@@ -983,6 +983,7 @@ font-size: small;
 
 .notepad-header {
   margin-bottom: 20px;
+  min-height: 100px;
 }
 
 .notepad-header h2 {
@@ -1026,11 +1027,13 @@ font-size: small;
 }
 
 .notepad-list {
-  border: 2px solid red;
+  border: 2px solid #FFDB5A;
   height: 25rem;
   list-style-type: none;
   padding: 0;
   margin: 0;
+  max-height: 290px;
+  overflow-y: scroll;
   
 }
 
@@ -1069,8 +1072,9 @@ font-size: small;
 .notepad-download-btn {
 
   align-items: justify;
-  margin-left: 54.5rem;
-  margin-top: 0.5rem;
+  margin-left: 54rem;
+  margin-top: 1.5rem;
+
   padding: 5px 0px;
   background-color: #442b48;
   color: white;
@@ -1078,10 +1082,13 @@ font-size: small;
   border-radius: 100px;
   cursor: pointer;
 
-  width: 2rem;
-  height: 2rem;
+  width: 2.2rem;
+  height: 2.2rem;
   z-index: 10;
   position: absolute;
+  box-shadow: 0px 4px 9px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 4px 9px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 9px 0px rgba(0,0,0,0.75);
 }
 .notepad-download-btn svg{
 
@@ -1092,3 +1099,42 @@ font-size: small;
 .notepad-download-btn:hover {
   background-color: #704d7e;
 }
+
+.notepad-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.notepad-header .title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color:#6B4671;
+}
+
+.notepad .description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.notepad .date {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.notepad .time {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.notepad .host {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.notepad .attendees {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+

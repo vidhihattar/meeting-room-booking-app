@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { Link } from "react-router-dom";
-// import { useMeetingsContext } from '../hooks/useMeetingsContext'
-// import { useAuthContext } from '../hooks/useAuthContext'
 function formatDate(dateString) {
   const date = new Date(dateString);
   const options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -17,6 +15,9 @@ function formatTime(dateString) {
 
 
  const JoinMeetingCard = ({meeting}) => {
+
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const meetingId = urlSearchParams.get('meetingid');
 
 
     function JoinMeetingButtonState(meeting) {
@@ -56,14 +57,14 @@ function formatTime(dateString) {
           <p className="card-date"><span>{formatDate(meeting.date)}</span></p>
         </div>
         <div className="card-body">
-          <p className="card-host">Host: <span>{meeting.host}</span></p>
+          <p className="card-host">Host: <span>{meeting.host.name}</span></p>
           <p className="card-time"><span>{formatTime(meeting.start_time)} - {formatTime(meeting.end_time)}</span></p>
           
         </div>
         <div className="card-footer">
         <p className="card-venue">Venue:{meeting.room.name}</p>
 
-       <Link to="/momlive" state={{ meetingId: meeting._id }}> <button  className={isButtonEnabled ? "card-button" : "card-button-disabled"} disabled={!isButtonEnabled}>Join Now</button></Link>
+       <Link to={`/momlive?meetingid=${meeting._id}`}> <button  className={isButtonEnabled ? "card-button" : "card-button-disabled"} disabled={!isButtonEnabled}>Join Now</button></Link>
         </div>
       </div>
     );

@@ -46,7 +46,7 @@ const MeetingInviteCard = ({ meeting, handleAcceptDeny }) => {
                 <div className="top-body">
                     <div className="meeting-host">
                         <div className="host">Host:</div>
-                        <div>{user.email}</div>
+                        <div>{meeting.host.name}</div>
                     </div>
                     <div className="meeting-time">
                         <div>{formatTime(meeting.start_time)} - {formatTime(meeting.end_time)}</div>

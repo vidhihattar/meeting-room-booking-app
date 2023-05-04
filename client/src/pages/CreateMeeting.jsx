@@ -39,6 +39,9 @@ const CreateMeeting = () => {
             },
             description,
             attendees: attendees,
+            host: {
+                name: user.email,
+            }
         };
         console.log(meeting)
 
