@@ -248,6 +248,61 @@ body {
 
 
 
+/* button animation */
+.meeting-card .bottom-body .btns .accepted-btn {
+  animation-name: accepted-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: green solid;
+
+}
+
+@keyframes accepted-animation {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.meeting-card .bottom-body .btns .denied-btn {
+  animation-name: denied-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: red solid;
+
+}
+
+@keyframes denied-animation {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* button animation end */
+
+
+
 .meeting-room {
   display: flex;
   flex-direction: row;
@@ -889,9 +944,7 @@ font-size: small;
   padding-right: 30px;
 }
 
-.modal .status-div div:nth-child(1){
 
-}
 .modal .status-div div:nth-child(2){
   left: 0;
 }
@@ -969,3 +1022,16 @@ font-size: small;
   margin: 0;
   font-size: 16px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
