@@ -59,6 +59,7 @@ body {
 
 .sidebar .logout-option p {
   padding-right: 12px;
+  
 }
 
 
@@ -69,22 +70,36 @@ body {
   background-color: #442B48;
   color: #FFDB5A;
   cursor: pointer;
+ 
 }
 
-.sidebar .option::selection{
+.sidebar .option::selection {
   background-color: #442B48;
   color: #FFDB5A;
   cursor: pointer;
+  
 }
+.sidebar .option svg::selection  {
+  fill: #fabb00;
+
+}
+
 
 .sidebar .option:hover path {
   fill: #fabb00;
 }
 
+.fill-svg{
+  fill: #fabb00;
+}
+
+.option-color{
+  color:#442B48;
+}
 
 
 .sidebar a {
-  color: #333;
+
   text-decoration: none;
   font-size: 18px;
 }
@@ -1021,6 +1036,13 @@ font-size: small;
 .notepad-item-text {
   margin: 0;
   font-size: 16px;
+}
+
+.active-class{
+  background-color: #442B48;
+  color: #FFDB5A;
+  cursor: pointer;
+  
 }
 
 
