@@ -55,7 +55,9 @@ const Home = () => {
           {console.log(meetings)}
           {meetings && meetings.map(meeting => (
             <div key={meeting._id}>
-              <MeetingCard meeting={meeting} onClick={() => handleCardClick(meeting)} home={true} />
+      
+              <MeetingCard meeting={meeting} onClick={() => handleCardClick(meeting)}  />
+
             </div>
           ))}
 
