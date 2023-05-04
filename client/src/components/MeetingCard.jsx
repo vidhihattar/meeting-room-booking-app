@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext"
+
 
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -55,9 +57,9 @@ const MeetingCard = ({ meeting, home, onClick }) => {
 
     return (
 
-        <div class="meeting-card " onClick={onClick}>
+        <div class="meeting-card " >
 
-            <div class="meeting-header">
+            <div class="meeting-header" onClick={onClick}>
                 <div class="meeting-title">{meeting.title}</div>
                 <div>{formatDate(meeting.date)}</div>
             </div>
@@ -81,7 +83,7 @@ const MeetingCard = ({ meeting, home, onClick }) => {
                     </div>
                     <div className="btns">
                         {home ? (
-                            <button className="join-btn">Join</button>
+                           <Link to="/momlive"> <button  className="join-btn" >Join</button></Link>
                         ) : (
                             <div>
                                 <button className="accept-btn" onClick={handleClick}>Accept</button>
