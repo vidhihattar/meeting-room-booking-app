@@ -20,7 +20,7 @@ function formatTime(dateString) {
 
 const MeetingCard = ({ meeting,onClick}) => {
     const { user } = useAuthContext()
-
+  
     
     
     
@@ -57,7 +57,7 @@ const MeetingCard = ({ meeting,onClick}) => {
                     <div className="btns">
 
                    
-                           <Link to="/momlive"> <button  className="join-btn" >Join</button></Link>
+                           <Link to={`/momlive?meetingid=${meeting._id}`}> <button  className="join-btn" >Join</button></Link>
 
               
                         

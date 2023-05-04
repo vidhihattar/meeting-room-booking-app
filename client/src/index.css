@@ -59,7 +59,7 @@ body {
 
 .sidebar .logout-option p {
   padding-right: 12px;
-  
+
 }
 
 
@@ -70,14 +70,14 @@ body {
   background-color: #442B48;
   color: #FFDB5A;
   cursor: pointer;
- 
+
 }
 
 .sidebar .option::selection {
   background-color: #442B48;
   color: #FFDB5A;
   cursor: pointer;
-  
+
 }
 .sidebar .option svg::selection  {
   fill: #fabb00;
@@ -210,6 +210,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
 
 }
 
@@ -828,14 +829,14 @@ font-size: small;
   height:40px;
   padding:10px;
   font-weight: bold;
-  
-  
+
+
   border:none;
-  
+
   color:#c1bec2;
   background-color: #9E90A0;
   cursor: not-allowed;
-  
+
 }
 .join-meeting-card .card-footer .card-button-disabled:disabled:hover{
   background-color: #6b5d6d;
@@ -970,12 +971,14 @@ font-size: small;
 .notepad {
   background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: 2px 2px 0 #ccc;
-  width: 500px;
-  height: 400px;
+
+  width: 900px;
+  height: 500px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
+  padding-left: 20px;
   font-family: Arial, sans-serif;
+
 }
 
 .notepad-header {
@@ -1006,13 +1009,17 @@ font-size: small;
 }
 
 .notepad-add-btn {
-  background-color: #ccc;
+  display: flex;
+  margin-left: 10px;
+  background-color: #ffdba0;
   border: none;
   color: #fff;
   padding: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  border-radius: 100%;
 }
+
 
 .notepad-add-btn:hover {
   background-color: #aaa;
@@ -1038,22 +1045,47 @@ font-size: small;
   font-size: 16px;
 }
 
+
 .active-class{
   background-color: #442B48;
   color: #FFDB5A;
   cursor: pointer;
-  
+
 }
 
 
+.mom-live{
+  display: flex;
+  width: fit-content;
+  align-items: flex-start;
+  flex-direction: row;
 
 
+}
 
+.notepad-download-btn {
 
+  align-items: justify;
+  margin-left: 50rem;
+  margin-top: 15rem;
+  padding: 5px 0px;
+  background-color: #442b48;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
 
+  width: 2rem;
+  height: 2rem;
+  z-index: 10;
+  position: absolute;
+}
+.notepad-download-btn svg{
 
+  border-radius: 100px;
 
+}
 
-
-
-
+.notepad-download-btn:hover {
+  background-color: #704d7e;
+}
