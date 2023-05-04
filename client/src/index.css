@@ -1026,9 +1026,12 @@ font-size: small;
 }
 
 .notepad-list {
+  border: 2px solid red;
+  height: 25rem;
   list-style-type: none;
   padding: 0;
   margin: 0;
+  
 }
 
 .notepad-item {
@@ -1066,8 +1069,8 @@ font-size: small;
 .notepad-download-btn {
 
   align-items: justify;
-  margin-left: 50rem;
-  margin-top: 15rem;
+  margin-left: 54.5rem;
+  margin-top: 0.5rem;
   padding: 5px 0px;
   background-color: #442b48;
   color: white;
