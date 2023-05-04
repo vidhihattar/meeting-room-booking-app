@@ -7,6 +7,7 @@ import CreateMeeting from './pages/CreateMeeting';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import JoinMeeting from './pages/JoinMeeting'
+import MomLive from './pages/MomLive';
 import { useAuthContext } from './hooks/useAuthContext';
 import { UsersContextProvider } from './context/UsersContext';
 import { RoomsContextProvider } from './context/RoomsContext';
@@ -70,6 +71,22 @@ function App() {
               </UsersContextProvider>
             ) : <Navigate to="/login" />}
           />
+          <Route
+            path='/momlive'
+            element={user ? (
+              <UsersContextProvider>
+
+                <MeetingInvitesContextProvider>
+                  <MomLive />
+                </MeetingInvitesContextProvider>
+
+
+
+              </UsersContextProvider>
+            ) : <Navigate to="/login" />}
+          />
+
+      
           <Route
             path="/login"
             element={!user ? <Login /> : <Navigate to="/" />}

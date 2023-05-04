@@ -35,11 +35,14 @@ const JoinMeeting = () => {
             <div className="create-meeting-form-container">
                 <div className="create-meeting-heading">Join Meeting</div>
                
-            {meetings && meetings.map(meeting => (
+          <div className="Join-meeting-container">  {meetings && meetings.map(meeting => (
             <JoinMeetingCard meeting={meeting} key={meeting._id}/>
+            
           ))}
+          </div>
+          </div>
         </div>
-        </div>
+        
     
     );
 }

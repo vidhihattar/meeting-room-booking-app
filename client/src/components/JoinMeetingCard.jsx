@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { Link } from "react-router-dom";
 // import { useMeetingsContext } from '../hooks/useMeetingsContext'
 // import { useAuthContext } from '../hooks/useAuthContext'
 function formatDate(dateString) {
@@ -12,7 +14,41 @@ function formatTime(dateString) {
   return date.toLocaleTimeString('en-US', options);
 }
 
-const JoinMeetingCard = ({meeting}) => {
+
+
+ const JoinMeetingCard = ({meeting}) => {
+
+
+    function JoinMeetingButtonState(meeting) {
+      const [startTime, setStartTime] = useState(formatTime(meeting.start_time));
+      const [endTime, setEndTime] = useState(formatTime(meeting.end_time));
+      const [isButtonActive, setIsButtonActive] = useState(false);
+  
+      useEffect(() => {
+        const intervalId = setInterval(() => {
+          const currentTime = new Date().toLocaleTimeString("en-US", {
+            hour12: true,
+            hour: "numeric",
+            minute: "numeric",
+          });
+          const currentDate = new Date();
+
+         if(formatDate(currentDate) === formatDate(meeting.date)){
+          setIsButtonActive(currentTime >= formatTime(meeting.start_time) && currentTime <= formatTime(meeting.end_time));
+        }
+        }, 100); // Update every second
+  
+        return () => clearInterval(intervalId);
+      }, [meeting.start_time]);
+  
+      return isButtonActive;
+    }
+  
+    const isButtonEnabled = JoinMeetingButtonState(meeting);
+  
+   
+ 
+
     return (
         <div className="join-meeting-card">
         <div className="card-header">
@@ -25,11 +61,13 @@ const JoinMeetingCard = ({meeting}) => {
           
         </div>
         <div className="card-footer">
-        <p classNAme="card-venue">Venue:{meeting.room.name}</p>
-        <button className="card-button">Join Now</button>
+        <p className="card-venue">Venue:{meeting.room.name}</p>
+
+       <Link to="/momlive"> <button  className={isButtonEnabled ? "card-button" : "card-button-disabled"} disabled={!isButtonEnabled}>Join Now</button></Link>
         </div>
       </div>
     );
-}
+
+  };
 
 export default JoinMeetingCard;
