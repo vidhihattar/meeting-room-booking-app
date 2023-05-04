@@ -16,6 +16,16 @@ function MomLivePad({meeting}) {
     }
   };
 
+  const handleDownload = () => {
+    const text = items.join("\n"); // Combine all items into a single string
+    const element = document.createElement("a");
+    const file = new Blob([text], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "momlive.txt";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
+
   return (
     <div className="notepad">
       <div className="notepad-header">
@@ -43,6 +53,10 @@ function MomLivePad({meeting}) {
           </li>
         ))}
       </ul>
+      <button className="notepad-download-btn" onClick={handleDownload}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path fill="currentColor" d="M6 20q-.825 0-1.413-.588T4 18v-3h2v3h12v-3h2v3q0 .825-.588 1.413T18 20H6Zm6-4l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11l-5 5Z"/></svg>
+      </button>
     </div>
   );
 }

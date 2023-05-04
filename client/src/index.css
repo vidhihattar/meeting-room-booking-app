@@ -1039,6 +1039,33 @@ font-size: small;
 
 }
 
+.notepad-download-btn {
+
+  align-items: justify;
+  margin-left: 50rem;
+  margin-top: 15rem;
+  padding: 5px 0px;
+  background-color: #442b48;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+ 
+  width: 2rem;
+  height: 2rem;
+  z-index: 10;
+  position: absolute;
+}
+.notepad-download-btn svg{
+
+  border-radius: 100px;
+  
+}
+
+.notepad-download-btn:hover {
+  background-color: #704d7e;
+}
+
 
 
 
