@@ -63,7 +63,7 @@ function formatTime(dateString) {
         <div className="card-footer">
         <p className="card-venue">Venue:{meeting.room.name}</p>
 
-       <Link to="/momlive"> <button  className={isButtonEnabled ? "card-button" : "card-button-disabled"} disabled={!isButtonEnabled}>Join Now</button></Link>
+       <Link to="/momlive" state={{ meetingId: meeting._id }}> <button  className={isButtonEnabled ? "card-button" : "card-button-disabled"} disabled={!isButtonEnabled}>Join Now</button></Link>
         </div>
       </div>
     );

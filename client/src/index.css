@@ -195,6 +195,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
 
 }
 
@@ -955,12 +956,14 @@ font-size: small;
 .notepad {
   background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: 2px 2px 0 #ccc;
-  width: 500px;
-  height: 400px;
+
+  width: 900px;
+  height: 500px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
+  padding-left: 20px;
   font-family: Arial, sans-serif;
+  
 }
 
 .notepad-header {
@@ -991,13 +994,17 @@ font-size: small;
 }
 
 .notepad-add-btn {
-  background-color: #ccc;
+  display: flex;
+  margin-left: 10px;
+  background-color: #ffdba0;
   border: none;
   color: #fff;
   padding: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  border-radius: 100%;
 }
+
 
 .notepad-add-btn:hover {
   background-color: #aaa;
@@ -1021,6 +1028,15 @@ font-size: small;
 .notepad-item-text {
   margin: 0;
   font-size: 16px;
+}
+
+.mom-live{
+  display: flex;
+  width: fit-content;
+  align-items: flex-start;
+  flex-direction: row;
+  
+
 }
 
 
