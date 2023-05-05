@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { MeetingsContextProvider } from './context/MeetingsContext';
 import { AuthContextProvider } from './context/AuthContext'
+import { MomContextProvider } from './context/MomContext';
 
 
 
@@ -12,9 +13,11 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <MeetingsContextProvider>
+      <MomContextProvider>
 
 
           <App />
+          </MomContextProvider>
  
 
         

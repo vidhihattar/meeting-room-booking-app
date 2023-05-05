@@ -74,7 +74,7 @@ function Sidebar(props) {
 
 
                 <NavLink
-                    to="/getmom"
+                    to="/getmoms"
                     className={({ isActive }) => isActive ? "active-class" : "option-color"}
                     children={({ isActive }) => (
                     <div className="option" >

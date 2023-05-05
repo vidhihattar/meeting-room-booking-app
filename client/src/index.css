@@ -455,6 +455,15 @@ hr {
   align-items: center;
   font-size: 19px;
   font-weight: 600;
+
+  
+}
+.mom-download-icon{
+  margin: 5px;
+}
+
+.mom-download-icon:hover{
+  cursor: pointer;
 }
 
 /* input style */
@@ -478,6 +487,7 @@ hr {
   padding-left: 30px;
   background-color: #fff;
   border-radius: 5px;
+  min-height: 650px;
 
 }
 
@@ -585,6 +595,8 @@ hr {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
 .selected-users {
@@ -707,7 +719,7 @@ hr {
   flex-direction: column;
   border-radius: 10px;
   padding:10px 10px 0px 5px;
-  margin:10px 0 0 10px;
+  margin:20px ;
   background-image: conic-gradient(from 230deg,#FcC700, #FFa700, #Ffc700);
 }
 
@@ -788,11 +800,12 @@ font-size: small;
 
 }
 
-
-.join-meeting-card .card-footer .card-venue, button{
-  padding: 10px 0 10px 0;
-/*   border:2px solid red; */
+.join-button-disabled {
+  padding: 10px 20px;
 }
+
+
+
 .join-meeting-card .card-footer .card-button{
   margin-left:11rem;
   margin-top: 10px;
@@ -838,6 +851,8 @@ font-size: small;
   cursor: not-allowed;
 
 }
+
+
 .join-meeting-card .card-footer .card-button-disabled:disabled:hover{
   background-color: #6b5d6d;
   border-color: #9E90A0;
@@ -869,6 +884,7 @@ font-size: small;
   position: fixed;
   top: 50%;
   left: 50%;
+  border: 2px solid #FFC700;
   transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 5px;
@@ -880,6 +896,36 @@ font-size: small;
   width: 900px; /* updated width */
   height: 570px; /* updated height */
   padding : 30px;
+}
+
+.modal-left-container-elements, .modal-right-container-elements{
+  background-color: #EDEDED;
+  padding: 10px;
+  margin: 20px 10px;
+  border-radius: 5px;
+}
+
+.modal-right-container-elements{
+  height: 422px;
+}
+
+.svg-h3{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+
+
+.modal-left-container-elements h3,
+.modal-right-container-elements h3{
+  margin: 10px 10px;
+}
+
+.modal-left-container-elements div:last-child,
+.modal-right-container-elements .inner-elements{
+  margin: 10px 10px;
 }
 
 .modal.is-open {

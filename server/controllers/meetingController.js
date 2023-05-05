@@ -7,10 +7,15 @@ const mongoose = require('mongoose');
 
 const getMeetings = async (req, res) => {
     const user_id = req.user._id;
-    const meetings = await Meeting.find({ 'host.id': user_id }).sort({ createdAt: -1 });
-
+    const now = new Date();
+    const meetings = await Meeting.find({ 
+      'host.id': user_id,
+      end_time: { $gt: now } // Only include meetings whose end time is greater than current time
+    }).sort({ createdAt: -1 });
+  
     res.status(200).json(meetings);
-}
+  };
+  
 
 // get a single meeting
 

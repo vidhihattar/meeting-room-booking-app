@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMeetingsContext } from "../hooks/useMeetingsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
+import {useMomContext} from "../hooks/useMomContext"
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -17,6 +18,7 @@ function formatTime(dateString) {
 function MomLivePad({ meetingId }) {
   const { meeting, dispatch } = useMeetingsContext()
   const { user } = useAuthContext()
+  const { dispatch: momsDispatch } = useMomContext();
   const [inputValue, setInputValue] = useState("");
   const [items, setItems] = useState([]);
   console.log(meetingId)
@@ -32,7 +34,7 @@ function MomLivePad({ meetingId }) {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
 
     const meetingData = `
     ${meeting.title}
@@ -44,6 +46,37 @@ function MomLivePad({ meetingId }) {
   `;
 
     const text = `${meetingData}\n\n${items.join("\n")}`;
+
+    const mom = {
+      text: text,
+      meeting_id : meetingId,
+      meeting_title : meeting.title,
+      host_name: user.email,
+      attendees: meeting.attendees
+      };
+
+      const response = await fetch('/api/getmoms', {
+        method: 'POST',
+        body: JSON.stringify(mom),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
+        }
+    })
+
+
+    const json = await response.json()
+
+    if (!response.ok) {
+        console.log(json.error)
+    }
+
+    if (response.ok) {
+      momsDispatch({ type: 'CREATE_MOM', payload: json })
+      console.log('new mom added:', json)
+    }
+
+
 
     
     const element = document.createElement("a");

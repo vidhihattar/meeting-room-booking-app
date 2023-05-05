@@ -11,8 +11,11 @@ import MomLive from './pages/MomLive';
 import { useAuthContext } from './hooks/useAuthContext';
 import { UsersContextProvider } from './context/UsersContext';
 import { RoomsContextProvider } from './context/RoomsContext';
-import {MeetingInvitesContextProvider} from './context/MeetingInvitesContext'
+import { MeetingInvitesContextProvider } from './context/MeetingInvitesContext'
 import MeetingInvites from './pages/MeetingInvites';
+import { MomContextProvider } from './context/MomContext';
+import Moms from './pages/Moms';
+
 
 
 
@@ -77,7 +80,9 @@ function App() {
               <UsersContextProvider>
 
                 <MeetingInvitesContextProvider>
-                  <MomLive />
+                  <MomContextProvider>
+                    <MomLive />
+                  </MomContextProvider>
                 </MeetingInvitesContextProvider>
 
 
@@ -86,7 +91,25 @@ function App() {
             ) : <Navigate to="/login" />}
           />
 
-      
+
+          <Route
+            path='/getmoms'
+            element={user ? (
+              <UsersContextProvider>
+
+                <MeetingInvitesContextProvider>
+                  <MomContextProvider>
+                    <Moms />
+                  </MomContextProvider>
+                </MeetingInvitesContextProvider>
+
+
+
+              </UsersContextProvider>
+            ) : <Navigate to="/login" />}
+          />
+
+
           <Route
             path="/login"
             element={!user ? <Login /> : <Navigate to="/" />}

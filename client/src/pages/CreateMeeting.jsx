@@ -162,7 +162,9 @@ const CreateMeeting = () => {
     const handleUserSelect = (e) => {
         const userId = e.target.value;
         const user = users.find((user) => user._id === userId);
-        setSelectedUsers([...selectedUsers, user]);
+        if (!selectedUsers.some((u) => u._id === userId)) {
+            setSelectedUsers([...selectedUsers, user]);
+          }
     };
 
     const handleRoomSelect = (e) => {

@@ -5,10 +5,12 @@ import MeetingModal from "../components/MeetingModal";
 
 import { useMeetingsContext } from "../hooks/useMeetingsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
+import {useMomContext} from "../hooks/useMomContext"
 
 const Home = () => {
 
   const { meetings, dispatch } = useMeetingsContext()
+  const { moms, dispatch: momDispatch } = useMomContext()
   const { user } = useAuthContext()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,12 +41,29 @@ const Home = () => {
       }
     }
 
+    const fetchMoms = async ()=>{
+      const response = await fetch('/api/getmoms/', {
+        headers: { 'Authorization': `Bearer ${user.token}` }
+      });
+
+      const json = await response.json();
+
+      if (response.ok) {
+
+        momDispatch({ type: 'SET_MOMS', payload: json })
+        console.log("response is ok");
+
+      }
+
+    }
+
     if (user) {
       console.log("home called");
       fetchMeetings()
+      fetchMoms()
     }
-  }, [dispatch, user]);
-  console.log(meetings);
+  }, [dispatch, momDispatch, user]);
+  console.log(moms);
 
 
   return (
@@ -72,9 +91,10 @@ const Home = () => {
       <div className="mom-container">
         <div className="mom-heading">MoMs <span></span></div>
         <div className="mom-cards-container">
-          <MomCard />
-          <MomCard />
-          <MomCard />
+        {meetings && moms.map(mom => (
+          <div key={mom._id}>
+          <MomCard mom ={mom}/>
+          </div>))}
 
         </div>
       </div>

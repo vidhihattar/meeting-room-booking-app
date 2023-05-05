@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext"
 
@@ -20,6 +20,33 @@ function formatTime(dateString) {
 
 const MeetingCard = ({ meeting,onClick}) => {
     const { user } = useAuthContext()
+
+    function JoinMeetingButtonState(meeting) {
+        const [startTime, setStartTime] = useState(formatTime(meeting.start_time));
+        const [endTime, setEndTime] = useState(formatTime(meeting.end_time));
+        const [isButtonActive, setIsButtonActive] = useState(false);
+    
+        useEffect(() => {
+          const intervalId = setInterval(() => {
+            const currentTime = new Date().toLocaleTimeString("en-US", {
+              hour12: true,
+              hour: "numeric",
+              minute: "numeric",
+            });
+            const currentDate = new Date();
+  
+           if(formatDate(currentDate) === formatDate(meeting.date)){
+            setIsButtonActive(currentTime >= formatTime(meeting.start_time) && currentTime <= formatTime(meeting.end_time));
+          }
+          }, 100); // Update every second
+    
+          return () => clearInterval(intervalId);
+        }, [meeting.start_time]);
+    
+        return isButtonActive;
+      }
+    
+      const isButtonEnabled = JoinMeetingButtonState(meeting);
   
     
     
@@ -57,7 +84,7 @@ const MeetingCard = ({ meeting,onClick}) => {
                     <div className="btns">
 
                    
-                           <Link to={`/momlive?meetingid=${meeting._id}`}> <button  className="join-btn" >Join</button></Link>
+                           <Link to={`/momlive?meetingid=${meeting._id}`}> <button className={isButtonEnabled ? "card-button join-btn" : " join-button-disabled"} disabled={!isButtonEnabled}   >Join</button></Link>
 
               
                         
